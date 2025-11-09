@@ -17,16 +17,16 @@ export default function Projects() {
   ];
 
   return (
-    <section id="proyectos" className="py-34 bg-gray-800">
+    <section id="proyectos" className="min-h-screen py-16 sm:py-20 lg:py-24 bg-gray-800 flex items-center">
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
         
         {/* Título de la Sección */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
             Proyectos
           </h2>
-          <div className="w-24 h-1.5 bg-blue-500 mx-auto mb-6"></div>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+          <div className="w-20 sm:w-24 h-1.5 bg-blue-500 mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto px-4">
             {projects.length > 0 
               ? 'Algunos de los proyectos en los que he trabajado'
               : 'Estoy trabajando en proyectos increíbles que pronto estarán aquí'
@@ -36,15 +36,15 @@ export default function Projects() {
 
         {/* Si no hay proyectos, mostrar mensaje de construcción */}
         {projects.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-12">
-            <div className="relative mb-8">
-              <Loader2 className="w-20 h-20 text-blue-500 animate-spin" />
-              <div className="absolute inset-0 w-20 h-20 border-4 border-blue-500/20 rounded-full"></div>
+          <div className="flex flex-col items-center justify-center py-10 sm:py-12 px-4">
+            <div className="relative mb-6 sm:mb-8">
+              <Loader2 className="w-16 h-16 sm:w-20 sm:h-20 text-blue-500 animate-spin" />
+              <div className="absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 border-4 border-blue-500/20 rounded-full"></div>
             </div>
-            <h3 className="text-3xl font-bold text-white mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 text-center">
               🚧 En Construcción
             </h3>
-            <p className="text-gray-400 text-lg text-center max-w-lg">
+            <p className="text-gray-400 text-base sm:text-lg text-center max-w-lg leading-relaxed px-2">
               Actualmente estoy desarrollando nuevos proyectos que mostrarán mis habilidades técnicas. 
               ¡Vuelve pronto para ver mi trabajo!
             </p>

@@ -34,8 +34,8 @@ export default function Navbar() {
   const navItems = [
     { href: '#inicio', icon: Home, label: 'Inicio' },
     { href: '#sobre-mi', icon: User, label: 'Sobre Mí' },
-    { href: '#proyectos', icon: Briefcase, label: 'Proyectos' },
     { href: '#habilidades', icon: Rocket, label: 'Habilidades' },
+    { href: '#proyectos', icon: Briefcase, label: 'Proyectos' },
   ];
 
   return (

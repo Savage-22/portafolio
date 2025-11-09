@@ -116,27 +116,27 @@ export default function Skills() {
   ];
 
   return (
-    <section id="habilidades" className="py-20 bg-gray-900">
+    <section id="habilidades" className="min-h-screen py-16 sm:py-20 bg-gray-900 flex items-center">
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
         
         {/* Título de la Sección */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
             Habilidades y Experiencia
           </h2>
-          <div className="w-24 h-1.5 bg-blue-500 mx-auto mb-6"></div>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+          <div className="w-20 sm:w-24 h-1.5 bg-blue-500 mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto px-4">
             Una visión completa de mis capacidades técnicas y profesionales
           </p>
         </div>
 
         {/* Technical Skills Section */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
-            <Code2 className="mr-3 text-blue-500" size={36} />
-            Habilidades Técnicas
+        <div className="mb-16 sm:mb-18 lg:mb-20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3">
+            <Code2 className="text-blue-500 flex-shrink-0" size={32} />
+            <span>Habilidades Técnicas</span>
           </h3>
-          <div className="w-20 h-1 bg-blue-500 mb-10"></div>
+          <div className="w-16 sm:w-20 h-1 bg-blue-500 mb-8 sm:mb-10"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technicalSkills.map((category, index) => {
@@ -175,11 +175,11 @@ export default function Skills() {
 
         {/* Professional Skills Section */}
         <div>
-          <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
-            <Sparkles className="mr-3 text-purple-500" size={36} />
-            Habilidades Profesionales
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3">
+            <Sparkles className="text-purple-500 flex-shrink-0" size={32} />
+            <span>Habilidades Profesionales</span>
           </h3>
-          <div className="w-20 h-1 bg-purple-500 mb-10"></div>
+          <div className="w-16 sm:w-20 h-1 bg-purple-500 mb-8 sm:mb-10"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {professionalSkills.map((skill, index) => {
