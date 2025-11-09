@@ -133,10 +133,9 @@ export default function About() {
               </p>
               
               <p>
-                Me apasiona crear tecnología que realmente importa. He desarrollado proyectos como 
-                <span className="text-blue-400"> "Transporte Huánuco"</span>, una plataforma de gestión para empresas de transporte, 
-                y fundé <span className="text-purple-400">"Programando Sonrisas"</span>, donde enseño fundamentos de programación 
-                a niños de comunidades vulnerables usando Scratch.
+                Me apasiona crear tecnología que genere un impacto positivo en la sociedad. 
+                Disfruto enfrentando nuevos desafíos y aprendiendo constantemente sobre desarrollo web, 
+                bases de datos y arquitectura de software para crear soluciones innovadoras y eficientes.
               </p>
 
               <p>

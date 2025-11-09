@@ -17,21 +17,21 @@ export default function Hero() {
             Jeet Lee Jeik Pasquel Bustillos
           </h1>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Systems Engineering Student
+            Estudiante de Ingeniería de Sistemas
           </h2>
         </div>
 
         {/* Ubicación */}
         <div className="flex items-center justify-center gap-2 text-gray-300">
           <MapPin className="w-5 h-5 text-blue-400" />
-          <span className="text-base sm:text-lg">Huánuco, Peru 🇵🇪 | Campinas, Brazil 🇧🇷</span>
+          <span className="text-base sm:text-lg">Huánuco, Perú 🇵🇪 | Campinas, Brasil 🇧🇷</span>
         </div>
 
         {/* Descripción - Con max-w para mejor legibilidad */}
         <p className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto px-4">
-          Passionate about creating technology with social impact. Currently on academic exchange at 
-          <span className="text-purple-400 font-semibold"> UNICAMP</span>, developing full-stack solutions 
-          and teaching the next generation of programmers.
+          Apasionado por crear tecnología con impacto social. Actualmente en intercambio académico en 
+          <span className="text-purple-400 font-semibold"> UNICAMP</span>, desarrollando soluciones full-stack 
+          y enseñando programación a la próxima generación.
         </p>
 
         {/* Iconos Sociales - gap-6 para más espacio */}
