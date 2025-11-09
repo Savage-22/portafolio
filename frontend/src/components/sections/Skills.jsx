@@ -1,107 +1,214 @@
 import React from 'react';
+import { 
+  Code2, 
+  Palette, 
+  Server, 
+  Database, 
+  Wrench, 
+  ClipboardList,
+  Globe,
+  Users,
+  Zap,
+  Puzzle,
+  MessageCircle,
+  FileCode,
+  Workflow,
+  GitBranch,
+  Package,
+  Container,
+  BarChart3,
+  GitFork,
+  Ruler,
+  Github,
+  FileJson,
+  Sparkles,
+  Coffee
+} from 'lucide-react';
 
 export default function Skills() {
-  const skillCategories = [
+  const technicalSkills = [
     {
-      title: 'Frontend',
+      category: 'Programación y Desarrollo',
+      Icon: Code2,
       skills: [
-        { name: 'React', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Tailwind CSS', level: 88 },
-        { name: 'TypeScript', level: 75 },
-      ],
-      icon: '🎨'
+        { name: 'JavaScript', Icon: FileCode },
+        { name: 'Java', Icon: Coffee },
+        { name: 'C', Icon: FileJson },
+        { name: 'HTML', Icon: Code2 },
+        { name: 'CSS', Icon: Palette },
+      ]
     },
     {
-      title: 'Backend',
+      category: 'Frontend',
+      Icon: Palette,
       skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Express', level: 85 },
-        { name: 'Python', level: 70 },
-        { name: 'SQL', level: 75 },
-        { name: 'MongoDB', level: 78 },
-      ],
-      icon: '⚙️'
+        { name: 'React', Icon: Code2 },
+        { name: 'Tailwind CSS', Icon: Palette },
+      ]
     },
     {
-      title: 'Herramientas',
+      category: 'Backend',
+      Icon: Server,
       skills: [
-        { name: 'Git', level: 90 },
-        { name: 'Docker', level: 70 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Figma', level: 65 },
-        { name: 'Postman', level: 80 },
-      ],
-      icon: '🛠️'
+        { name: 'Node.js', Icon: Server },
+        { name: 'Express', Icon: Workflow },
+      ]
+    },
+    {
+      category: 'Base de Datos',
+      Icon: Database,
+      skills: [
+        { name: 'MySQL', Icon: Database },
+        { name: 'PostgreSQL', Icon: Database },
+        { name: 'Modelado de Datos', Icon: BarChart3 },
+        { name: 'Diagramas ER', Icon: GitFork },
+        { name: 'Normalización', Icon: Ruler },
+      ]
+    },
+    {
+      category: 'Herramientas y Plataformas',
+      Icon: Wrench,
+      skills: [
+        { name: 'Git', Icon: GitBranch },
+        { name: 'GitHub', Icon: Github },
+        { name: 'VS Code', Icon: Code2 },
+        { name: 'npm', Icon: Package },
+        { name: 'Docker', Icon: Container },
+      ]
+    },
+    {
+      category: 'Metodologías',
+      Icon: ClipboardList,
+      skills: [
+        { name: 'Scrum', Icon: Users },
+        { name: 'Kanban', Icon: ClipboardList },
+        { name: 'Desarrollo Colaborativo', Icon: Users },
+      ]
+    }
+  ];
+
+  const professionalSkills = [
+    {
+      title: 'Colaboración Intercultural',
+      description: 'Prosperando en un entorno académico internacional (Brasil)',
+      Icon: Globe
+    },
+    {
+      title: 'Liderazgo de Equipo',
+      description: 'Experiencia coordinando proyectos grupales y mentorizando estudiantes',
+      Icon: Users
+    },
+    {
+      title: 'Aprendizaje Rápido',
+      description: 'Adaptación rápida a nuevas tecnologías y frameworks',
+      Icon: Zap
+    },
+    {
+      title: 'Resolución de Problemas',
+      description: 'Enfoque analítico para resolver desafíos técnicos complejos',
+      Icon: Puzzle
+    },
+    {
+      title: 'Comunicación',
+      description: 'Efectiva en entornos multiculturales y multilingües',
+      Icon: MessageCircle
     }
   ];
 
   return (
-    <section id="habilidades" className="py-32 bg-gray-900">
+    <section id="habilidades" className="py-20 bg-gray-900">
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
         
         {/* Título de la Sección */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Habilidades
+            Habilidades y Experiencia
           </h2>
           <div className="w-24 h-1.5 bg-blue-500 mx-auto mb-6"></div>
           <p className="text-gray-400 text-xl max-w-2xl mx-auto">
-            Tecnologías y herramientas que domino
+            Una visión completa de mis capacidades técnicas y profesionales
           </p>
         </div>
 
-        {/* Grid de Categorías */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-gray-800 rounded-xl p-8 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:transform hover:scale-105"
-            >
-              {/* Header de Categoría */}
-              <div className="flex items-center mb-8">
-                <span className="text-4xl mr-3">{category.icon}</span>
-                <h3 className="text-2xl font-bold text-white">{category.title}</h3>
-              </div>
-
-              {/* Lista de Skills */}
-              <div className="space-y-5">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-300 font-medium text-base">{skill.name}</span>
-                      <span className="text-blue-400 font-semibold text-base">{skill.level}%</span>
-                    </div>
-                    {/* Barra de Progreso */}
-                    <div className="w-full bg-gray-700 rounded-full h-3">
-                      <div
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+        {/* Technical Skills Section */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
+            <Code2 className="mr-3 text-blue-500" size={36} />
+            Habilidades Técnicas
+          </h3>
+          <div className="w-20 h-1 bg-blue-500 mb-10"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {technicalSkills.map((category, index) => {
+              const CategoryIcon = category.Icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-800 rounded-xl p-6 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-700"
+                >
+                  {/* Header de Categoría */}
+                  <div className="flex items-center mb-6 pb-4 border-b border-gray-700">
+                    <CategoryIcon className="mr-3 text-blue-400" size={28} />
+                    <h4 className="text-xl font-bold text-white">{category.category}</h4>
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
+
+                  {/* Lista de Skills */}
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => {
+                      const SkillIcon = skill.Icon;
+                      return (
+                        <span
+                          key={skillIndex}
+                          className="inline-flex items-center px-3 py-2 bg-gray-700 text-gray-200 rounded-lg text-sm font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                        >
+                          <SkillIcon className="mr-2" size={16} />
+                          {skill.name}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Sección Extra: Tecnologías */}
-        <div className="mt-20">
-          <h3 className="text-3xl font-bold text-white text-center mb-10">
-            Otras Tecnologías
+        {/* Professional Skills Section */}
+        <div>
+          <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
+            <Sparkles className="mr-3 text-purple-500" size={36} />
+            Habilidades Profesionales
           </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['React Router', 'Vite', 'Redux', 'REST APIs', 'GraphQL', 'Jest', 'Webpack', 'SASS'].map((tech, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
-              >
-                {tech}
-              </span>
-            ))}
+          <div className="w-20 h-1 bg-purple-500 mb-10"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {professionalSkills.map((skill, index) => {
+              const SkillIcon = skill.Icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:transform hover:-translate-y-2 border border-gray-700"
+                >
+                  <div className="flex items-start mb-4">
+                    <SkillIcon className="mr-4 text-purple-400 flex-shrink-0" size={32} />
+                    <div>
+                      <h4 className="text-lg font-bold text-white mb-2">{skill.title}</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+        </div>
+
+        {/* Bottom Note */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 italic">
+            Siempre aprendiendo y creciendo con nuevas tecnologías y metodologías
+          </p>
         </div>
       </div>
     </section>

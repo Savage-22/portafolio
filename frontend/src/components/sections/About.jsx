@@ -41,7 +41,7 @@ export default function About() {
   };
 
   return (
-    <section id="sobre-mi" className="py-32 bg-gray-800">
+    <section id="sobre-mi" className="py-22 bg-gray-800">
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
         
         {/* Título de la Sección */}

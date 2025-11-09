@@ -46,7 +46,7 @@ export default function Hero() {
             <Github className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
           </a>
           <a 
-            href="https://linkedin.com/in/jeik-pasquel" 
+            href="https://www.linkedin.com/in/jeik-pasquel-43215b280/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="p-4 bg-white/10 rounded-full hover:bg-blue-400 transition-all duration-300 hover:scale-110 group"
