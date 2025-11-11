@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center h-20 px-10">
         
         {/* Logo */}
-        <a href="#inicio">
+        <a href="/">
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-transform">
             Jeik Pasquel
           </h1>
