@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Contact() {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -93,16 +95,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="min-h-screen py-16 sm:py-20 bg-gray-900 flex items-center">
+    <section id="contacto" className={`min-h-screen py-16 sm:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
         
         {/* Título de la Sección */}
         <div className="text-center mb-12 sm:mb-14 lg:mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Contacto
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-blue-500 mx-auto mb-4 sm:mb-6"></div>
-          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto px-4">
+          <div className={`w-20 sm:w-24 h-1.5 mx-auto mb-4 sm:mb-6 ${theme === 'dark' ? 'bg-blue-500' : 'bg-[#8b7355]'}`}></div>
+          <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
             ¿Tienes un proyecto en mente? ¡Hablemos!
           </p>
         </div>
@@ -112,10 +114,10 @@ export default function Contact() {
           {/* Columna Izquierda - Información de Contacto */}
           <div className="space-y-6 sm:space-y-8">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
                 Información de Contacto
               </h3>
-              <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
+              <p className={`text-base sm:text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
                 No dudes en contactarme para cualquier proyecto, colaboración o simplemente para saludar. 
                 Estoy abierto a nuevas oportunidades y desafíos.
               </p>
@@ -127,15 +129,15 @@ export default function Contact() {
               {/* Email */}
               <div className="flex items-start space-x-4 group">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500 to-sky-500' : 'bg-[#8b7355]'}`}>
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold mb-1">Email</h4>
+                  <h4 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Email</h4>
                   <a 
                     href="mailto:jeik11109@gmail.com" 
-                    className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                    className={` ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}
                   >
                     jeik11109@gmail.com
                   </a>
@@ -145,13 +147,13 @@ export default function Contact() {
               {/* Ubicación */}
               <div className="flex items-start space-x-4 group">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500 to-sky-500' : 'bg-[#8b7355]'}`}>
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold mb-1">Ubicación</h4>
-                  <p className="text-gray-400">
+                  <h4 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Ubicación</h4>
+                  <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
                     Huánuco, Perú
                   </p>
                 </div>
@@ -160,16 +162,22 @@ export default function Contact() {
 
             {/* Redes Sociales */}
             <div className="pt-4 sm:pt-6">
-              <h4 className="text-white font-semibold mb-4 sm:mb-5 text-base sm:text-lg">Sígueme en</h4>
+              <h4 className={`font-semibold mb-4 sm:mb-5 text-base sm:text-lg ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Sígueme en</h4>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a 
                   href="https://github.com/Savage-22" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="group relative w-11 h-11 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                  className={`group relative w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 ${
+                    theme === 'dark' 
+                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600' 
+                      : 'bg-[#d4c4a8] hover:bg-[#8b7355]'
+                  }`}
                 >
                   <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                  <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none ${
+                    theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-[#8b7355] text-white'
+                  }`}>
                     GitHub
                   </span>
                 </a>
@@ -177,10 +185,16 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/jeik-pasquel-43215b280/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="group relative w-11 h-11 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                  className={`group relative w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 ${
+                    theme === 'dark' 
+                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600' 
+                      : 'bg-[#d4c4a8] hover:bg-[#8b7355]'
+                  }`}
                 >
                   <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                  <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none ${
+                    theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-[#8b7355] text-white'
+                  }`}>
                     LinkedIn
                   </span>
                 </a>
@@ -188,20 +202,20 @@ export default function Contact() {
             </div>
 
             {/* Call to Action Extra */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/20 rounded-xl p-5 sm:p-6 mt-6 sm:mt-8">
-              <h4 className="text-white font-semibold mb-2 flex items-center gap-2 text-sm sm:text-base">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 flex-shrink-0" />
+            <div className={`rounded-xl p-5 sm:p-6 mt-6 sm:mt-8 border ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500/10 to-purple-600/10 border-blue-500/20' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}>
+              <h4 className={`font-semibold mb-2 flex items-center gap-2 text-sm sm:text-base ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
+                <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'}`} />
                 Disponible para proyectos
               </h4>
-              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+              <p className={`text-xs sm:text-sm leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
                 Actualmente abierto a oportunidades de desarrollo full-stack y colaboraciones en proyectos interesantes.
               </p>
             </div>
           </div>
 
           {/* Columna Derecha - Formulario */}
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl border border-gray-700">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5 sm:mb-6">
+          <div className={`rounded-2xl p-6 sm:p-8 shadow-2xl border ${theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}>
+            <h3 className={`text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
               Envíame un mensaje
             </h3>
             
@@ -209,7 +223,7 @@ export default function Contact() {
               
               {/* Nombre */}
               <div>
-                <label htmlFor="name" className="block text-gray-300 font-medium mb-2 text-sm">
+                <label htmlFor="name" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Nombre
                 </label>
                 <input
@@ -219,14 +233,18 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                  className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
+                    theme === 'dark' 
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                      : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
+                  }`}
                   placeholder="Tu nombre"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-gray-300 font-medium mb-2 text-sm">
+                <label htmlFor="email" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Email
                 </label>
                 <input
@@ -236,14 +254,18 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                  className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
+                    theme === 'dark' 
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                      : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
+                  }`}
                   placeholder="tu@email.com"
                 />
               </div>
 
               {/* Asunto */}
               <div>
-                <label htmlFor="subject" className="block text-gray-300 font-medium mb-2 text-sm">
+                <label htmlFor="subject" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Asunto
                 </label>
                 <input
@@ -253,14 +275,18 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                  className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
+                    theme === 'dark' 
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                      : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
+                  }`}
                   placeholder="¿En qué puedo ayudarte?"
                 />
               </div>
 
               {/* Mensaje */}
               <div>
-                <label htmlFor="message" className="block text-gray-300 font-medium mb-2 text-sm">
+                <label htmlFor="message" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Mensaje
                 </label>
                 <textarea
@@ -270,7 +296,11 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-gray-900 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 resize-none"
+                  className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 resize-none border ${
+                    theme === 'dark' 
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                      : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
+                  }`}
                   placeholder="Escribe tu mensaje aquí..."
                 ></textarea>
               </div>
@@ -279,7 +309,11 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                className={`w-full px-6 py-3.5 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600' 
+                    : 'bg-[#8b7355] hover:bg-[#6b5d4a]'
+                }`}
               >
                 {isSubmitting ? (
                   <>
