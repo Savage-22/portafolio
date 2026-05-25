@@ -40,3 +40,8 @@ dist
 
 # Testing
 coverage
+
+# Tooling documentation (Claude Code, guías internas)
+CLAUDE.md
+STYLE_GUIDE.md
+frontend/SEO_GUIDE.md
