@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 
-import Dash from './Dash';
+import HomePage from './HomePage';
 
 export default function Rutas() {
     return(
         <Router>
             <Routes>
-                <Route path="/" element={<Dash/>} />
+                <Route path="/" element={<HomePage/>} />
             </Routes>
         </Router>
     );
