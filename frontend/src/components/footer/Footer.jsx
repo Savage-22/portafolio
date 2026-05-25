@@ -1,10 +1,9 @@
-import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function Footer() {
   const { theme } = useTheme();
   const currentYear = new Date().getFullYear();
-  const lastUpdated = "11 de noviembre de 2025"; // Actualiza esta fecha cuando hagas cambios
+  const lastUpdated = "11 de noviembre de 2025";
 
   return (
     <footer className={`transition-colors duration-300 border-t ${
