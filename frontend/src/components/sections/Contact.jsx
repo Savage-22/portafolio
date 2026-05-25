@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Mail, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useTheme } from '../../context/ThemeContext';
@@ -25,69 +25,45 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      // Configuración de EmailJS desde variables de entorno
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      
-      // Debug: Verificar que las variables se cargan
-      console.log('🔍 Variables de entorno:', {
-        serviceId: serviceId ? '✅ Cargado' : '❌ No encontrado',
-        templateId: templateId ? '✅ Cargado' : '❌ No encontrado',
-        publicKey: publicKey ? '✅ Cargado' : '❌ No encontrado'
-      });
 
-      // Validar que existan las credenciales
       if (!serviceId || !templateId || !publicKey) {
         throw new Error('Faltan configuraciones de EmailJS. Verifica tu archivo .env');
       }
-      
-      // Preparar los datos del template
+
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_name: 'Jeik',  // Tu nombre
+        to_name: 'Jeik',
       };
 
-      console.log('📤 Enviando email con:', { serviceId, templateId });
-
-      // Enviar email usando EmailJS
       const response = await emailjs.send(
         serviceId,
         templateId,
         templateParams,
         publicKey
       );
-      
-      console.log('✅ Email enviado exitosamente:', response);
-      
-      setStatus({ 
-        type: 'success', 
-        message: '¡Mensaje enviado exitosamente! Te contactaré pronto.' 
+
+      setStatus({
+        type: 'success',
+        message: '¡Mensaje enviado exitosamente! Te contactaré pronto.'
       });
-      
-      // Resetear formulario
+
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Limpiar mensaje después de 5 segundos
+
       setTimeout(() => {
         setStatus({ type: '', message: '' });
       }, 5000);
     } catch (error) {
-      console.error('❌ Error al enviar email:', error);
-      console.error('❌ Detalles del error:', {
-        name: error.name,
-        message: error.message,
-        text: error.text
-      });
-      
-      setStatus({ 
-        type: 'error', 
-        message: error.message || 'Hubo un error al enviar el mensaje. Intenta de nuevo.' 
+      setStatus({
+        type: 'error',
+        message: error.message || 'Hubo un error al enviar el mensaje. Intenta de nuevo.'
       });
     } finally {
       setIsSubmitting(false);
@@ -97,8 +73,7 @@ export default function Contact() {
   return (
     <section id="contacto" className={`min-h-screen py-16 sm:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
-        
-        {/* Título de la Sección */}
+
         <div className="text-center mb-12 sm:mb-14 lg:mb-16">
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Contacto
@@ -110,23 +85,20 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-7xl mx-auto">
-          
-          {/* Columna Izquierda - Información de Contacto */}
+
           <div className="space-y-6 sm:space-y-8">
             <div>
               <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
                 Información de Contacto
               </h3>
               <p className={`text-base sm:text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
-                No dudes en contactarme para cualquier proyecto, colaboración o simplemente para saludar. 
+                No dudes en contactarme para cualquier proyecto, colaboración o simplemente para saludar.
                 Estoy abierto a nuevas oportunidades y desafíos.
               </p>
             </div>
 
-            {/* Items de Contacto */}
             <div className="space-y-5 sm:space-y-6">
-              
-              {/* Email */}
+
               <div className="flex items-start space-x-4 group">
                 <div className="flex-shrink-0">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500 to-sky-500' : 'bg-[#8b7355]'}`}>
@@ -135,8 +107,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Email</h4>
-                  <a 
-                    href="mailto:jeik11109@gmail.com" 
+                  <a
+                    href="mailto:jeik11109@gmail.com"
                     className={` ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}
                   >
                     jeik11109@gmail.com
@@ -144,7 +116,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Ubicación */}
               <div className="flex items-start space-x-4 group">
                 <div className="flex-shrink-0">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500 to-sky-500' : 'bg-[#8b7355]'}`}>
@@ -160,17 +131,16 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Redes Sociales */}
             <div className="pt-4 sm:pt-6">
               <h4 className={`font-semibold mb-4 sm:mb-5 text-base sm:text-lg ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Sígueme en</h4>
               <div className="flex flex-wrap gap-3 sm:gap-4">
-                <a 
-                  href="https://github.com/Savage-22" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://github.com/Savage-22"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group relative w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 ${
-                    theme === 'dark' 
-                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600' 
+                    theme === 'dark'
+                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600'
                       : 'bg-[#d4c4a8] hover:bg-[#8b7355]'
                   }`}
                 >
@@ -181,13 +151,13 @@ export default function Contact() {
                     GitHub
                   </span>
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/jeik-pasquel-43215b280/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.linkedin.com/in/jeik-pasquel-43215b280/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group relative w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 ${
-                    theme === 'dark' 
-                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600' 
+                    theme === 'dark'
+                      ? 'bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600'
                       : 'bg-[#d4c4a8] hover:bg-[#8b7355]'
                   }`}
                 >
@@ -201,7 +171,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Call to Action Extra */}
             <div className={`rounded-xl p-5 sm:p-6 mt-6 sm:mt-8 border ${theme === 'dark' ? 'bg-gradient-to-br from-blue-500/10 to-purple-600/10 border-blue-500/20' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}>
               <h4 className={`font-semibold mb-2 flex items-center gap-2 text-sm sm:text-base ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
                 <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'}`} />
@@ -213,15 +182,13 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Columna Derecha - Formulario */}
           <div className={`rounded-2xl p-6 sm:p-8 shadow-2xl border ${theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}>
             <h3 className={`text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
               Envíame un mensaje
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-5">
-              
-              {/* Nombre */}
+
               <div>
                 <label htmlFor="name" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Nombre
@@ -234,15 +201,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
-                    theme === 'dark' 
-                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                    theme === 'dark'
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
                       : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
                   }`}
                   placeholder="Tu nombre"
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label htmlFor="email" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Email
@@ -255,15 +221,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
-                    theme === 'dark' 
-                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                    theme === 'dark'
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
                       : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
                   }`}
                   placeholder="tu@email.com"
                 />
               </div>
 
-              {/* Asunto */}
               <div>
                 <label htmlFor="subject" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Asunto
@@ -276,15 +241,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 border ${
-                    theme === 'dark' 
-                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                    theme === 'dark'
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
                       : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
                   }`}
                   placeholder="¿En qué puedo ayudarte?"
                 />
               </div>
 
-              {/* Mensaje */}
               <div>
                 <label htmlFor="message" className={`block font-medium mb-2 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                   Mensaje
@@ -297,21 +261,20 @@ export default function Contact() {
                   required
                   rows="5"
                   className={`w-full px-4 py-3 rounded-lg focus:outline-none transition-all duration-200 resize-none border ${
-                    theme === 'dark' 
-                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20' 
+                    theme === 'dark'
+                      ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
                       : 'bg-[#f5f1e8] text-[#2c2416] border-[#8b7355]/30 focus:border-[#8b7355] focus:ring-2 focus:ring-[#8b7355]/20'
                   }`}
                   placeholder="Escribe tu mensaje aquí..."
                 ></textarea>
               </div>
 
-              {/* Botón Submit */}
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full px-6 py-3.5 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 ${
-                  theme === 'dark' 
-                    ? 'bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600' 
+                  theme === 'dark'
+                    ? 'bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600'
                     : 'bg-[#8b7355] hover:bg-[#6b5d4a]'
                 }`}
               >
@@ -328,11 +291,10 @@ export default function Contact() {
                 )}
               </button>
 
-              {/* Status Message */}
               {status.message && (
                 <div className={`p-4 rounded-lg text-center font-medium ${
-                  status.type === 'success' 
-                    ? 'bg-green-600/20 text-green-400 border border-green-600/30' 
+                  status.type === 'success'
+                    ? 'bg-green-600/20 text-green-400 border border-green-600/30'
                     : 'bg-red-600/20 text-red-400 border border-red-600/30'
                 }`}>
                   {status.message}
