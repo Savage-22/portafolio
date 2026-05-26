@@ -1,0 +1,38 @@
+export const timeline = [
+  {
+    type: 'education',
+    title: 'Ingeniería de Sistemas',
+    institution: 'Universidad Nacional Hermilio Valdizán',
+    location: 'Huánuco, Perú',
+    period: '2022 — Presente',
+    description: 'Formación en ciencias de la computación, algoritmos, estructuras de datos, bases de datos y desarrollo de software.',
+    icon: '🎓',
+  },
+  {
+    type: 'experience',
+    title: 'Intercambio Académico',
+    institution: 'UNICAMP — Universidade Estadual de Campinas',
+    location: 'Campinas, Brasil',
+    period: '2024 — 2025',
+    description: 'Programa de intercambio en una de las top 10 universidades de América Latina. Materias en computación en un entorno multicultural e internacional.',
+    icon: '🌍',
+  },
+  {
+    type: 'experience',
+    title: 'Desarrollador Full Stack',
+    institution: 'Proyecto TitTit',
+    location: 'Remoto',
+    period: '2024 — Presente',
+    description: 'Diseño y desarrollo de plataforma de gestión para conductores de delivery usando React, Node.js y PostgreSQL.',
+    icon: '🛵',
+  },
+  {
+    type: 'education',
+    title: 'Enseñanza de Programación',
+    institution: 'Programa Social Comunitario',
+    location: 'Huánuco, Perú',
+    period: '2023 — 2024',
+    description: 'Voluntariado enseñando programación básica a jóvenes de comunidades con recursos limitados. Más de 30 estudiantes impactados.',
+    icon: '👨‍🏫',
+  },
+];
