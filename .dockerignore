@@ -1,5 +1,30 @@
+# dependencias y output (nunca deben entrar al contexto)
 frontend/node_modules
 frontend/dist
+frontend/.vite
+
+# git
 .git
 .gitignore
+
+# archivos de entorno — nunca incluir en la imagen
+.env
+.env.*
+frontend/.env
+frontend/.env.*
+
+# docs y configs de desarrollo
 *.md
+CLAUDE.md
+STYLE_GUIDE.md
+frontend/SEO_GUIDE.md
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
