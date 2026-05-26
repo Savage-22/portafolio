@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { projects } from '../../data/projects';
@@ -10,7 +11,13 @@ export default function Projects() {
     <section id="proyectos" className={`min-h-screen py-16 sm:py-18 lg:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#e8dcc8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
 
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14 lg:mb-16"
+        >
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Proyectos
           </h2>
@@ -21,7 +28,7 @@ export default function Projects() {
               : 'Estoy trabajando en proyectos increíbles que pronto estarán aquí'
             }
           </p>
-        </div>
+        </motion.div>
 
         {projects.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-10 sm:py-12 px-4">
@@ -40,9 +47,14 @@ export default function Projects() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 ${
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
                   theme === 'dark'
                     ? 'bg-gray-900 hover:shadow-blue-500/30'
                     : 'bg-[#f5f1e8] hover:shadow-[#8b7355]/30'
@@ -145,12 +157,18 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
 
-        <div className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="text-center mt-12"
+        >
           <a
             href="https://github.com/Savage-22"
             target="_blank"
@@ -166,7 +184,7 @@ export default function Projects() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

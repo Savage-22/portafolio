@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Download, Code, Globe, Users } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -43,7 +44,13 @@ export default function About() {
     }`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
 
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
+        >
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${
             theme === 'dark' ? 'text-white' : 'text-[#2c2416]'
           }`}>
@@ -52,11 +59,17 @@ export default function About() {
           <div className={`w-20 sm:w-24 h-1.5 mx-auto ${
             theme === 'dark' ? 'bg-blue-500' : 'bg-[#8b7355]'
           }`}></div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
-          <div className="flex justify-center lg:justify-start">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="flex justify-center lg:justify-start"
+          >
             <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem]">
 
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80">
@@ -78,11 +91,7 @@ export default function About() {
                 } ${currentIndex === 0 ? (theme === 'dark' ? 'ring-2 ring-blue-400' : 'ring-2 ring-[#8b7355]') : ''}`}
                 onClick={() => handleImageClick(0)}
               >
-                <img
-                  src={satelliteImages[0].src}
-                  alt={satelliteImages[0].alt}
-                  className="w-full h-full rounded-full object-cover"
-                />
+                <img src={satelliteImages[0].src} alt={satelliteImages[0].alt} className="w-full h-full rounded-full object-cover" />
               </button>
 
               <button
@@ -92,11 +101,7 @@ export default function About() {
                 } ${currentIndex === 1 ? (theme === 'dark' ? 'ring-2 ring-blue-400' : 'ring-2 ring-[#8b7355]') : ''}`}
                 onClick={() => handleImageClick(1)}
               >
-                <img
-                  src={satelliteImages[1].src}
-                  alt={satelliteImages[1].alt}
-                  className="w-full h-full rounded-full object-cover"
-                />
+                <img src={satelliteImages[1].src} alt={satelliteImages[1].alt} className="w-full h-full rounded-full object-cover" />
               </button>
 
               <button
@@ -106,19 +111,21 @@ export default function About() {
                 } ${currentIndex === 2 ? (theme === 'dark' ? 'ring-2 ring-blue-400' : 'ring-2 ring-[#8b7355]') : ''}`}
                 onClick={() => handleImageClick(2)}
               >
-                <img
-                  src={satelliteImages[2].src}
-                  alt={satelliteImages[2].alt}
-                  className="w-full h-full rounded-full object-cover"
-                />
+                <img src={satelliteImages[2].src} alt={satelliteImages[2].alt} className="w-full h-full rounded-full object-cover" />
               </button>
 
               <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[22rem] sm:h-[22rem] md:w-96 md:h-96 border-2 rounded-full animate-pulse pointer-events-none ${theme === 'dark' ? 'border-blue-500/20' : 'border-[#8b7355]/20'}`}></div>
               <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] border rounded-full pointer-events-none ${theme === 'dark' ? 'border-purple-500/10' : 'border-[#8b7355]/10'}`}></div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="space-y-6 sm:space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            className="space-y-6 sm:space-y-8"
+          >
             <h3 className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
               ¡Hola! Soy Jeet 🚀
             </h3>
@@ -192,7 +199,7 @@ export default function About() {
                 Descargar CV
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

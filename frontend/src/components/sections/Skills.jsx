@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import {
   Code2,
   Palette,
@@ -120,7 +121,13 @@ export default function Skills() {
     <section id="habilidades" className={`min-h-screen py-16 sm:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
 
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14 lg:mb-16"
+        >
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Habilidades y Experiencia
           </h2>
@@ -128,21 +135,31 @@ export default function Skills() {
           <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
             Una visión completa de mis capacidades técnicas y profesionales
           </p>
-        </div>
+        </motion.div>
 
         <div className="mb-16 sm:mb-18 lg:mb-20">
-          <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
+          <motion.h3
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}
+          >
             <Code2 className={`flex-shrink-0 ${theme === 'dark' ? 'text-blue-500' : 'text-[#8b7355]'}`} size={32} />
             <span>Habilidades Técnicas</span>
-          </h3>
+          </motion.h3>
           <div className={`w-16 sm:w-20 h-1 mb-8 sm:mb-10 ${theme === 'dark' ? 'bg-blue-500' : 'bg-[#8b7355]'}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technicalSkills.map((category, index) => {
               const CategoryIcon = category.Icon;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                   className={`rounded-xl p-6 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border ${
                     theme === 'dark'
                       ? 'bg-gray-800 hover:shadow-blue-500/20 border-gray-700'
@@ -158,9 +175,10 @@ export default function Skills() {
                     {category.skills.map((skill, skillIndex) => {
                       const SkillIcon = skill.Icon;
                       return (
-                        <span
+                        <motion.span
                           key={skillIndex}
-                          className={`inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                          whileHover={{ scale: 1.08 }}
+                          className={`inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 cursor-default ${
                             theme === 'dark'
                               ? 'bg-gray-700 text-gray-200 hover:bg-blue-600 hover:text-white'
                               : 'bg-[#f5f1e8] text-[#4a3f2e] border border-[#8b7355]/30 hover:bg-[#8b7355] hover:text-white'
@@ -168,29 +186,39 @@ export default function Skills() {
                         >
                           <SkillIcon className="mr-2" size={16} />
                           {skill.name}
-                        </span>
+                        </motion.span>
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
 
         <div>
-          <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
+          <motion.h3
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 flex items-center flex-wrap gap-2 sm:gap-3 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}
+          >
             <Sparkles className={`flex-shrink-0 ${theme === 'dark' ? 'text-purple-500' : 'text-[#a68a6a]'}`} size={32} />
             <span>Habilidades Profesionales</span>
-          </h3>
+          </motion.h3>
           <div className={`w-16 sm:w-20 h-1 mb-8 sm:mb-10 ${theme === 'dark' ? 'bg-purple-500' : 'bg-[#a68a6a]'}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {professionalSkills.map((skill, index) => {
               const SkillIcon = skill.Icon;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                   className={`rounded-xl p-6 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2 border ${
                     theme === 'dark'
                       ? 'bg-gradient-to-br from-gray-800 to-gray-900 hover:shadow-purple-500/20 border-gray-700'
@@ -206,17 +234,23 @@ export default function Skills() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
 
-        <div className="mt-16 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 text-center"
+        >
           <p className={`italic ${theme === 'dark' ? 'text-gray-500' : 'text-[#8b7355]'}`}>
             Siempre aprendiendo y creciendo con nuevas tecnologías y metodologías
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
