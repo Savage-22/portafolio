@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MapPin, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -5,7 +6,7 @@ export default function Hero() {
   const { theme } = useTheme();
 
   return (
-    <section id="inicio" className={`min-h-screen flex items-center justify-center pt-20 px-4 transition-colors duration-300 ${
+    <section id="inicio" className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${
       theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'
     }`}>
 
@@ -87,15 +88,15 @@ export default function Hero() {
         </div>
 
         <div className="pt-12 animate-bounce">
-          <a
-            href="#sobre-mi"
+          <Link
+            to="/sobre-mi"
             className={`inline-block transition-colors ${
               theme === 'dark' ? 'text-gray-400 hover:text-purple-400' : 'text-[#8b7355] hover:text-[#6b5d4a]'
             }`}
-            aria-label="Scroll to About section"
+            aria-label="Ver más sobre mí"
           >
             <ChevronDown className="w-8 h-8" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

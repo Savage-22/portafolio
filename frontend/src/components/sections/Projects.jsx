@@ -1,21 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { projects } from '../../data/projects';
 
 export default function Projects() {
   const { theme } = useTheme();
-
-  const projects = [
-    {
-      title: 'TitTit',
-      description: 'Plataforma de gestión inteligente para deliverys. Actualmente en Fase 1, permite a los conductores registrar y controlar sus ganancias por entrega. Escalable hacia gestión empresarial completa.',
-      image: '🛵',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
-      githubUrl: 'https://github.com/Savage-22/tit',
-      liveUrl: null,
-      status: 'En Desarrollo',
-      featured: true
-    }
-  ];
 
   return (
     <section id="proyectos" className={`min-h-screen py-16 sm:py-18 lg:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#e8dcc8]'}`}>
@@ -80,7 +69,7 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   <p className={`text-sm mb-5 line-clamp-3 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
-                    {project.description}
+                    {project.shortDescription}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-5">
@@ -98,7 +87,17 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
+                    <Link
+                      to={`/proyectos/${project.id}`}
+                      className={`flex-1 px-4 py-2.5 text-center rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 font-medium text-sm ${
+                        theme === 'dark'
+                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                          : 'bg-[#8b7355] hover:bg-[#6b5d4a] text-white'
+                      }`}
+                    >
+                      Ver detalle
+                    </Link>
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
