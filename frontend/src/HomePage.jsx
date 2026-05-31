@@ -12,12 +12,12 @@ export default function HomePage() {
     <>
       <Hero />
       <Stats />
-      <About />
+      <div id="sobre-mi"><About /></div>
       <Timeline />
-      <Skills />
-      <Projects />
+      <div id="habilidades"><Skills /></div>
+      <div id="proyectos"><Projects /></div>
       <Certifications />
-      <Contact />
+      <div id="contacto"><Contact /></div>
     </>
   );
 }

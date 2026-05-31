@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Home, User, Briefcase, Mail, Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
-const NavItem = ({ to, icon: Icon, children, onClick, theme }) => {
-  const location = useLocation();
-  const isActive = to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
+const NavItem = ({ to, icon: Icon, children, theme }) => {
+  const { pathname } = useLocation();
+  const isActive = pathname === to;
 
   return (
     <Link
       to={to}
-      onClick={onClick}
       className={`flex items-center gap-2 transition-all relative group ${
         isActive
           ? theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
@@ -26,27 +25,69 @@ const NavItem = ({ to, icon: Icon, children, onClick, theme }) => {
   );
 };
 
-const MobileNavItem = ({ to, icon: Icon, children, onClick, theme }) => {
-  const location = useLocation();
-  const isActive = to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
+const NavAnchor = ({ sectionId, icon: Icon, children, theme }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
+  };
 
   return (
-    <Link
-      to={to}
-      onClick={onClick}
-      className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-all font-medium border-l-4 ${
-        isActive
-          ? theme === 'dark'
-            ? 'text-white bg-gray-800 border-blue-400'
-            : 'text-[#2c2416] bg-[#d4c4a8] border-[#8b7355]'
-          : theme === 'dark'
-            ? 'text-gray-300 hover:text-white hover:bg-gray-800 border-transparent hover:border-blue-400'
-            : 'text-[#2c2416] hover:bg-[#d4c4a8] border-transparent hover:border-[#8b7355]'
+    <a
+      href={`#${sectionId}`}
+      onClick={handleClick}
+      className={`flex items-center gap-2 transition-all relative group cursor-pointer ${
+        theme === 'dark' ? 'text-gray-300 hover:text-blue-400' : 'text-[#2c2416] hover:text-[#8b7355]'
+      }`}
+    >
+      {Icon && <Icon className="w-4 h-4" />}
+      <span>{children}</span>
+      <span className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all ${
+        theme === 'dark' ? 'bg-blue-400' : 'bg-[#8b7355]'
+      }`} />
+    </a>
+  );
+};
+
+const MobileNavAnchor = ({ sectionId, icon: Icon, children, onClose, theme }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    onClose();
+    if (pathname === '/') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
+  };
+
+  return (
+    <a
+      href={`#${sectionId}`}
+      onClick={handleClick}
+      className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-all font-medium border-l-4 cursor-pointer ${
+        theme === 'dark'
+          ? 'text-gray-300 hover:text-white hover:bg-gray-800 border-transparent hover:border-blue-400'
+          : 'text-[#2c2416] hover:bg-[#d4c4a8] border-transparent hover:border-[#8b7355]'
       }`}
     >
       {Icon && <Icon className="w-5 h-5" />}
       <span>{children}</span>
-    </Link>
+    </a>
   );
 };
 
@@ -55,12 +96,6 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   const closeMenu = () => setIsMenuOpen(false);
-
-  const navItems = [
-    { to: '/', icon: Home, label: 'Inicio' },
-    { to: '/sobre-mi', icon: User, label: 'Sobre Mí' },
-    { to: '/proyectos', icon: Briefcase, label: 'Proyectos' },
-  ];
 
   return (
     <nav className={`${theme === 'dark' ? 'bg-gray-900 text-white border-blue-500/20' : 'bg-[#e8dcc8] text-[#2c2416] border-[#8b7355]/20'} shadow-lg fixed w-full top-0 z-50 backdrop-blur-sm bg-opacity-95 border-b transition-all duration-300`}>
@@ -77,21 +112,10 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => (
-            <NavItem key={item.to} to={item.to} icon={item.icon} theme={theme}>
-              {item.label}
-            </NavItem>
-          ))}
-
-          <Link
-            to="/contacto"
-            className={`flex items-center gap-2 rounded-lg transition-all transform hover:scale-105 ${
-              theme === 'dark' ? 'text-white hover:text-blue-300' : 'text-[#2c2416] hover:text-[#8b7355]'
-            }`}
-          >
-            <Mail className="w-4 h-4" />
-            <span>Contacto</span>
-          </Link>
+          <NavItem to="/" icon={Home} theme={theme}>Inicio</NavItem>
+          <NavAnchor sectionId="sobre-mi" icon={User} theme={theme}>Sobre Mí</NavAnchor>
+          <NavAnchor sectionId="proyectos" icon={Briefcase} theme={theme}>Proyectos</NavAnchor>
+          <NavAnchor sectionId="contacto" icon={Mail} theme={theme}>Contacto</NavAnchor>
 
           <button
             onClick={toggleTheme}
@@ -124,21 +148,21 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className={`lg:hidden border-t ${theme === 'dark' ? 'border-gray-800' : 'border-[#8b7355]/20'}`}>
           <div className="px-6 sm:px-8 py-4 space-y-2">
-            {navItems.map((item) => (
-              <MobileNavItem key={item.to} to={item.to} icon={item.icon} onClick={closeMenu} theme={theme}>
-                {item.label}
-              </MobileNavItem>
-            ))}
             <Link
-              to="/contacto"
+              to="/"
               onClick={closeMenu}
-              className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-all font-semibold ${
-                theme === 'dark' ? 'text-white' : 'text-[#2c2416]'
+              className={`flex items-center gap-3 px-5 py-3 rounded-lg transition-all font-medium border-l-4 border-transparent ${
+                theme === 'dark'
+                  ? 'text-gray-300 hover:text-white hover:bg-gray-800 hover:border-blue-400'
+                  : 'text-[#2c2416] hover:bg-[#d4c4a8] hover:border-[#8b7355]'
               }`}
             >
-              <Mail className="w-5 h-5" />
-              <span>Contacto</span>
+              <Home className="w-5 h-5" />
+              <span>Inicio</span>
             </Link>
+            <MobileNavAnchor sectionId="sobre-mi" icon={User} onClose={closeMenu} theme={theme}>Sobre Mí</MobileNavAnchor>
+            <MobileNavAnchor sectionId="proyectos" icon={Briefcase} onClose={closeMenu} theme={theme}>Proyectos</MobileNavAnchor>
+            <MobileNavAnchor sectionId="contacto" icon={Mail} onClose={closeMenu} theme={theme}>Contacto</MobileNavAnchor>
 
             <button
               onClick={toggleTheme}

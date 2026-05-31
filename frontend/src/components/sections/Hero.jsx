@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
@@ -104,15 +103,15 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="pt-12 animate-bounce">
-          <Link
-            to="/sobre-mi"
+          <button
+            onClick={() => document.getElementById('sobre-mi')?.scrollIntoView({ behavior: 'smooth' })}
             className={`inline-block transition-colors ${
               theme === 'dark' ? 'text-gray-400 hover:text-purple-400' : 'text-[#8b7355] hover:text-[#6b5d4a]'
             }`}
             aria-label="Ver más sobre mí"
           >
             <ChevronDown className="w-8 h-8" />
-          </Link>
+          </button>
         </motion.div>
 
       </motion.div>
