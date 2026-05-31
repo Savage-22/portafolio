@@ -57,9 +57,9 @@ export default function Hero() {
         <motion.p variants={item} className={`text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto px-4 ${
           theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'
         }`}>
-          Apasionado por crear tecnología con impacto social. Actualmente en intercambio académico en
-          <span className={`font-semibold ${theme === 'dark' ? 'text-purple-400' : 'text-[#8b7355]'}`}> UNICAMP</span>, desarrollando soluciones full-stack
-          y enseñando programación a la próxima generación.
+          Enfocado en terminar la carrera y construir proyectos con impacto real.
+          Me apasiona la tecnología que ayuda a las personas —
+          y eso es lo que guía cada línea de código que escribo.
         </motion.p>
 
         <motion.div variants={item} className="flex justify-center gap-6 pt-4">

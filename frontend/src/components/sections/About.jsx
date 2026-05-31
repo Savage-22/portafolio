@@ -137,26 +137,28 @@ export default function About() {
                 Estudiante de Ingeniería de Sistemas en la <span className={`font-semibold ${
                   theme === 'dark' ? 'text-sky-300' : 'text-[#6b7fa0]'
                 }`}>Universidad Nacional Hermilio Valdizán</span>,
-                actualmente en intercambio académico en <span className={`font-semibold ${
+                de vuelta en Huánuco después de un semestre de intercambio en <span className={`font-semibold ${
                   theme === 'dark' ? 'text-green-400' : 'text-[#5a8a5a]'
-                }`}>UNICAMP, Brasil</span>,
-                una de las universidades más prestigiosas de Latinoamérica.
+                }`}>UNICAMP, Brasil</span>.
+                Ahora enfocado en terminar la carrera y seguir construyendo proyectos que dejen huella.
               </p>
 
               <p>
-                Me apasiona crear tecnología que genere un impacto positivo en la sociedad.
-                Disfruto enfrentando nuevos desafíos y aprendiendo constantemente sobre desarrollo web,
-                bases de datos y arquitectura de software para crear soluciones innovadoras y eficientes.
+                Lo que más me mueve es crear tecnología con impacto real.
+                Me gusta desarrollar soluciones que simplifiquen la vida de las personas —
+                desde sistemas para colegios hasta plataformas que acercan la programación
+                a comunidades con pocos recursos. Creo que el software puede cambiar vidas,
+                y eso me da propósito.
               </p>
 
               <p>
                 Cuando no estoy programando, probablemente me encuentres practicando jiu-jitsu 🥋,
-                jugando fútbol ⚽ o explorando nuevos lugares y sabores en la cocina 🍳.
+                jugando fútbol ⚽ o experimentando en la cocina 🍳.
               </p>
 
               <div className={`flex flex-wrap gap-4 sm:gap-6 md:gap-10 items-start justify-center pt-4 ${theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'}`}>
                 <div className="flex flex-col items-center min-w-[80px]">
-                  <span className="text-sm sm:text-base mb-2">🇪🇸 Español</span>
+                  <span className="text-sm sm:text-base mb-2">🇵🇪 Español</span>
                   <span className={`text-xs sm:text-sm font-medium ${theme === 'dark' ? 'text-red-400' : 'text-[#8b4513]'}`}>Nativo</span>
                 </div>
                 <div className="flex flex-col items-center min-w-[80px]">
