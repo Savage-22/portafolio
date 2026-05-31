@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useTheme } from '../../context/ThemeContext';
@@ -74,7 +75,13 @@ export default function Contact() {
     <section id="contacto" className={`min-h-screen py-16 sm:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
 
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14 lg:mb-16"
+        >
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Contacto
           </h2>
@@ -82,11 +89,17 @@ export default function Contact() {
           <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
             ¿Tienes un proyecto en mente? ¡Hablemos!
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-7xl mx-auto">
 
-          <div className="space-y-6 sm:space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+            className="space-y-6 sm:space-y-8"
+          >
             <div>
               <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
                 Información de Contacto
@@ -109,7 +122,7 @@ export default function Contact() {
                   <h4 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>Email</h4>
                   <a
                     href="mailto:jeik11109@gmail.com"
-                    className={` ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}
+                    className={`${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}
                   >
                     jeik11109@gmail.com
                   </a>
@@ -180,9 +193,15 @@ export default function Contact() {
                 Actualmente abierto a oportunidades de desarrollo full-stack y colaboraciones en proyectos interesantes.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={`rounded-2xl p-6 sm:p-8 shadow-2xl border ${theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
+            className={`rounded-2xl p-6 sm:p-8 shadow-2xl border ${theme === 'dark' ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700' : 'bg-[#e8dcc8] border-[#8b7355]/30'}`}
+          >
             <h3 className={`text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
               Envíame un mensaje
             </h3>
@@ -292,16 +311,20 @@ export default function Contact() {
               </button>
 
               {status.message && (
-                <div className={`p-4 rounded-lg text-center font-medium ${
-                  status.type === 'success'
-                    ? 'bg-green-600/20 text-green-400 border border-green-600/30'
-                    : 'bg-red-600/20 text-red-400 border border-red-600/30'
-                }`}>
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-4 rounded-lg text-center font-medium ${
+                    status.type === 'success'
+                      ? 'bg-green-600/20 text-green-400 border border-green-600/30'
+                      : 'bg-red-600/20 text-red-400 border border-red-600/30'
+                  }`}
+                >
                   {status.message}
-                </div>
+                </motion.div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

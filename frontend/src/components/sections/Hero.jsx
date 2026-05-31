@@ -1,17 +1,33 @@
+import { motion } from 'framer-motion';
 import { MapPin, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.13 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
 
 export default function Hero() {
   const { theme } = useTheme();
 
   return (
-    <section id="inicio" className={`min-h-screen flex items-center justify-center pt-20 px-4 transition-colors duration-300 ${
+    <section id="inicio" className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${
       theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#f5f1e8]'
     }`}>
 
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="max-w-4xl mx-auto text-center space-y-8"
+      >
 
-        <div className="space-y-4">
+        <motion.div variants={item} className="space-y-4">
           <p className={`text-lg sm:text-xl font-medium ${
             theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
           }`}>
@@ -29,24 +45,24 @@ export default function Hero() {
           }`}>
             Estudiante de Ingeniería de Sistemas
           </h2>
-        </div>
+        </motion.div>
 
-        <div className={`flex items-center justify-center gap-2 ${
+        <motion.div variants={item} className={`flex items-center justify-center gap-2 ${
           theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'
         }`}>
           <MapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'}`} />
           <span className="text-base sm:text-lg">Huánuco, Perú 🇵🇪 | Campinas, Brasil 🇧🇷</span>
-        </div>
+        </motion.div>
 
-        <p className={`text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto px-4 ${
+        <motion.p variants={item} className={`text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto px-4 ${
           theme === 'dark' ? 'text-gray-300' : 'text-[#4a3f2e]'
         }`}>
           Apasionado por crear tecnología con impacto social. Actualmente en intercambio académico en
           <span className={`font-semibold ${theme === 'dark' ? 'text-purple-400' : 'text-[#8b7355]'}`}> UNICAMP</span>, desarrollando soluciones full-stack
           y enseñando programación a la próxima generación.
-        </p>
+        </motion.p>
 
-        <div className="flex justify-center gap-6 pt-4">
+        <motion.div variants={item} className="flex justify-center gap-6 pt-4">
           <a
             href="https://github.com/Savage-22"
             target="_blank"
@@ -84,20 +100,21 @@ export default function Hero() {
               theme === 'dark' ? 'text-gray-300' : 'text-white'
             }`} />
           </a>
-        </div>
+        </motion.div>
 
-        <div className="pt-12 animate-bounce">
-          <a
-            href="#sobre-mi"
+        <motion.div variants={item} className="pt-12 animate-bounce">
+          <button
+            onClick={() => document.getElementById('sobre-mi')?.scrollIntoView({ behavior: 'smooth' })}
             className={`inline-block transition-colors ${
               theme === 'dark' ? 'text-gray-400 hover:text-purple-400' : 'text-[#8b7355] hover:text-[#6b5d4a]'
             }`}
-            aria-label="Scroll to About section"
+            aria-label="Ver más sobre mí"
           >
             <ChevronDown className="w-8 h-8" />
-          </a>
-        </div>
-      </div>
+          </button>
+        </motion.div>
+
+      </motion.div>
     </section>
   );
 }

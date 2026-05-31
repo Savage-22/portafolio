@@ -1,66 +1,77 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { projects as projectsData } from '../../data/projects';
+
+// defensa: si el archivo está vacío o roto, no explota
+const safeProjects = Array.isArray(projectsData) ? projectsData : [];
 
 export default function Projects() {
   const { theme } = useTheme();
-
-  const projects = [
-    {
-      title: 'TitTit',
-      description: 'Plataforma de gestión inteligente para deliverys. Actualmente en Fase 1, permite a los conductores registrar y controlar sus ganancias por entrega. Escalable hacia gestión empresarial completa.',
-      image: '🛵',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
-      githubUrl: 'https://github.com/Savage-22/tit',
-      liveUrl: null,
-      status: 'En Desarrollo',
-      featured: true
-    }
-  ];
+  const isEmpty = safeProjects.length === 0;
 
   return (
     <section id="proyectos" className={`min-h-screen py-16 sm:py-18 lg:py-20 flex items-center transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0A1628]' : 'bg-[#e8dcc8]'}`}>
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24">
 
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14 lg:mb-16"
+        >
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
             Proyectos
           </h2>
           <div className={`w-20 sm:w-24 h-1.5 mx-auto mb-4 sm:mb-6 ${theme === 'dark' ? 'bg-blue-500' : 'bg-[#8b7355]'}`}></div>
           <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
-            {projects.length > 0
-              ? 'Algunos de los proyectos en los que he trabajado'
-              : 'Estoy trabajando en proyectos increíbles que pronto estarán aquí'
+            {isEmpty
+              ? 'Estoy trabajando en proyectos increíbles que pronto estarán aquí'
+              : 'Algunos de los proyectos en los que he trabajado'
             }
           </p>
-        </div>
+        </motion.div>
 
-        {projects.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-10 sm:py-12 px-4">
+        {isEmpty ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="flex flex-col items-center justify-center py-16 px-4"
+          >
             <div className="relative mb-6 sm:mb-8">
               <Loader2 className={`w-16 h-16 sm:w-20 sm:h-20 animate-spin ${theme === 'dark' ? 'text-blue-500' : 'text-[#8b7355]'}`} />
-              <div className={`absolute inset-0 w-16 h-16 sm:w-20 sm:h-20 border-4 rounded-full ${theme === 'dark' ? 'border-blue-500/20' : 'border-[#8b7355]/20'}`}></div>
+              <div className={`absolute inset-0 border-4 rounded-full ${theme === 'dark' ? 'border-blue-500/20' : 'border-[#8b7355]/20'}`}></div>
             </div>
             <h3 className={`text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-center ${theme === 'dark' ? 'text-white' : 'text-[#2c2416]'}`}>
               🚧 En Construcción
             </h3>
-            <p className={`text-base sm:text-lg text-center max-w-lg leading-relaxed px-2 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
+            <p className={`text-base sm:text-lg text-center max-w-lg leading-relaxed ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
               Actualmente estoy desarrollando nuevos proyectos que mostrarán mis habilidades técnicas.
               ¡Vuelve pronto para ver mi trabajo!
             </p>
-          </div>
+          </motion.div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 ${
+            {safeProjects.map((project, index) => (
+              <motion.div
+                key={project.id ?? index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
                   theme === 'dark'
                     ? 'bg-gray-900 hover:shadow-blue-500/30'
                     : 'bg-[#f5f1e8] hover:shadow-[#8b7355]/30'
                 }`}
               >
                 {project.featured && (
-                  <div className={`text-xs font-bold px-4 py-2 absolute mt-5 ml-5 rounded-full z-10 ${
+                  <div className={`absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full z-10 ${
                     theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-[#8b7355] text-white'
                   }`}>
                     ⭐ Destacado
@@ -72,7 +83,7 @@ export default function Projects() {
                     ? 'bg-gradient-to-br from-blue-500 to-purple-600'
                     : 'bg-gradient-to-br from-[#a68a6a] to-[#8b7355]'
                 }`}>
-                  {project.image}
+                  {project.image ?? '📁'}
                 </div>
 
                 <div className="p-6">
@@ -80,11 +91,11 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   <p className={`text-sm mb-5 line-clamp-3 ${theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'}`}>
-                    {project.description}
+                    {project.shortDescription ?? project.description ?? ''}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {project.technologies.map((tech, techIndex) => (
+                    {(project.technologies ?? []).map((tech, techIndex) => (
                       <span
                         key={techIndex}
                         className={`px-3 py-1 text-xs rounded-md font-medium ${
@@ -98,7 +109,19 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
+                    {project.id && (
+                      <Link
+                        to={`/proyectos/${project.id}`}
+                        className={`flex-1 px-4 py-2.5 text-center rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 font-medium text-sm ${
+                          theme === 'dark'
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                            : 'bg-[#8b7355] hover:bg-[#6b5d4a] text-white'
+                        }`}
+                      >
+                        Ver detalle
+                      </Link>
+                    )}
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
@@ -141,17 +164,23 @@ export default function Projects() {
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        {project.status || 'Próximamente'}
+                        {project.status ?? 'Próximamente'}
                       </div>
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
 
-        <div className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="text-center mt-12"
+        >
           <a
             href="https://github.com/Savage-22"
             target="_blank"
@@ -162,12 +191,12 @@ export default function Projects() {
                 : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'
             }`}
           >
-            {projects.length > 0 ? 'Ver más en GitHub' : 'Visita mi GitHub'}
+            {isEmpty ? 'Visita mi GitHub' : 'Ver más en GitHub'}
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
