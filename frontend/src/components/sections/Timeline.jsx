@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { timeline } from '../../data/timeline';
 
-export default function Timeline() {
+export default function Timeline({ limit }) {
   const { theme } = useTheme();
+  const visible = limit ? timeline.slice(0, limit) : timeline;
+  const hasMore = limit && timeline.length > limit;
 
   return (
     <section className={`py-16 sm:py-20 transition-colors duration-300 ${
@@ -47,12 +50,12 @@ export default function Timeline() {
           }`} />
 
           <div className="space-y-10 lg:space-y-12">
-            {timeline.map((item, index) => {
+            {visible.map((item, index) => {
               const isLeft = index % 2 === 0;
 
               return (
                 <motion.div
-                  key={index}
+                  key={item.id}
                   initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
@@ -62,13 +65,7 @@ export default function Timeline() {
                   }`}
                 >
                   {/* nodo del timeline */}
-                  <div className={`
-                    flex-shrink-0 z-10
-                    ml-0 lg:ml-0
-                    absolute left-6 lg:static lg:left-auto
-                    lg:order-none
-                    ${isLeft ? '' : ''}
-                  `}>
+                  <div className="flex-shrink-0 z-10 absolute left-6 lg:static lg:left-auto">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg border-4 ${
                       item.type === 'education'
                         ? theme === 'dark'
@@ -87,7 +84,7 @@ export default function Timeline() {
 
                   {/* card */}
                   <div className={`flex-1 ml-16 lg:ml-0 ${isLeft ? 'lg:text-right' : 'lg:text-left'}`}>
-                    <div className={`rounded-xl p-5 sm:p-6 border shadow-md ${
+                    <div className={`rounded-xl p-5 sm:p-6 border shadow-md transition-shadow hover:shadow-lg ${
                       theme === 'dark'
                         ? 'bg-gray-900 border-gray-700'
                         : 'bg-[#f5f1e8] border-[#8b7355]/20'
@@ -129,17 +126,55 @@ export default function Timeline() {
                         </span>
                       </div>
 
-                      <p className={`text-sm leading-relaxed ${
+                      <p className={`text-sm leading-relaxed mb-4 ${
                         theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
                       }`}>
                         {item.description}
                       </p>
+
+                      <div className={`border-t pt-3 flex ${isLeft ? 'lg:justify-end' : 'lg:justify-start'} ${
+                        theme === 'dark' ? 'border-gray-700' : 'border-[#8b7355]/15'
+                      }`}>
+                        <Link
+                          to={`/trayectoria/${item.id}`}
+                          className={`inline-flex items-center gap-1.5 text-xs font-semibold transition-colors ${
+                            theme === 'dark'
+                              ? 'text-blue-400 hover:text-blue-300'
+                              : 'text-[#8b7355] hover:text-[#6b5d4a]'
+                          }`}
+                        >
+                          Ver detalles <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
           </div>
+
+          {/* botón ver toda la trayectoria */}
+          {hasMore && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="flex justify-center mt-12"
+            >
+              <Link
+                to="/trayectoria"
+                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-sm transition-all hover:scale-105 shadow-md ${
+                  theme === 'dark'
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    : 'bg-[#8b7355] hover:bg-[#6b5d4a] text-white'
+                }`}
+              >
+                Ver toda la trayectoria
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
