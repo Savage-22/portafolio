@@ -37,7 +37,10 @@ export default function Timeline({ limit }) {
           </p>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto">
+
+          {/* contenedor con position relative solo para los ítems — la línea no pasa al botón */}
+          <div className="relative">
 
           {/* línea central — solo en lg */}
           <div className={`hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 ${
@@ -152,6 +155,7 @@ export default function Timeline({ limit }) {
               );
             })}
           </div>
+          </div>{/* fin contenedor línea+ítems */}
 
           {/* botón ver toda la trayectoria */}
           {hasMore && (
