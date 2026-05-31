@@ -30,7 +30,8 @@ export default function About() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]); // ← dependencia intencional: reinicia el intervalo al cambiar manualmente
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex]); // dependencia intencional: reinicia el intervalo al cambiar manualmente
 
   const handleImageClick = (index) => {
     setCurrentIndex(index);

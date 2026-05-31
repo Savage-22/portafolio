@@ -44,7 +44,7 @@ export default function Contact() {
         to_name: 'Jeik',
       };
 
-      const response = await emailjs.send(
+      await emailjs.send(
         serviceId,
         templateId,
         templateParams,
