@@ -88,17 +88,11 @@ export default function Timeline({ limit }) {
                   {/* card */}
                   <div className={`flex-1 ml-16 lg:ml-0 ${isLeft ? 'lg:text-right' : 'lg:text-left'}`}>
                     <Link to={`/trayectoria/${item.id}`} className="block group/card">
-                      <div className={`relative rounded-xl p-5 sm:p-6 border shadow-md hover:shadow-xl transition-all cursor-pointer ${
+                      <div className={`rounded-xl p-5 sm:p-6 border shadow-md hover:shadow-xl transition-all cursor-pointer ${
                         theme === 'dark'
                           ? 'bg-gray-900 border-gray-700 hover:border-gray-500'
                           : 'bg-[#f5f1e8] border-[#8b7355]/20 hover:border-[#8b7355]/50'
                       }`}>
-                        <ChevronRight className={`absolute bottom-4 right-4 w-4 h-4 transition-all opacity-25 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 ${
-                          item.type === 'education'
-                            ? theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
-                            : theme === 'dark' ? 'text-purple-400' : 'text-[#a68a6a]'
-                        }`} />
-
                         <div className={`flex flex-wrap items-center gap-2 mb-2 ${
                           isLeft ? 'lg:justify-end' : 'lg:justify-start'
                         }`}>
@@ -136,11 +130,19 @@ export default function Timeline({ limit }) {
                           </span>
                         </div>
 
-                        <p className={`text-sm leading-relaxed ${
+                        <p className={`text-sm leading-relaxed mb-3 ${
                           theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
                         }`}>
                           {item.description}
                         </p>
+
+                        <div className="flex justify-end">
+                          <ChevronRight className={`w-4 h-4 transition-all opacity-25 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 ${
+                            item.type === 'education'
+                              ? theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
+                              : theme === 'dark' ? 'text-purple-400' : 'text-[#a68a6a]'
+                          }`} />
+                        </div>
                       </div>
                     </Link>
                   </div>
