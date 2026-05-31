@@ -3,7 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 export default function Footer() {
   const { theme } = useTheme();
   const currentYear = new Date().getFullYear();
-  const lastUpdated = "11 de noviembre de 2025";
+  const lastUpdated = "31 de mayo de 2026";
 
   return (
     <footer className={`transition-colors duration-300 border-t ${
@@ -21,7 +21,7 @@ export default function Footer() {
               Última actualización: {lastUpdated}
             </p>
             <p className="text-center">
-              Hecho con ❤️ usando React
+              Hecho con ❤️
             </p>
           </div>
         </div>
