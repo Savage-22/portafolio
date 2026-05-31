@@ -13,6 +13,10 @@ jobs:
   lint-and-build:
     name: Lint & Build
     runs-on: ubuntu-latest
+    # Opt-in a Node.js 24 para el runtime interno de las actions.
+    # Obligatorio desde el 16 de junio de 2026 — activado anticipadamente.
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       # 1. Descarga el código del PR/push
