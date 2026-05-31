@@ -93,7 +93,7 @@ export default function Timeline({ limit }) {
                           ? 'bg-gray-900 border-gray-700 hover:border-gray-500'
                           : 'bg-[#f5f1e8] border-[#8b7355]/20 hover:border-[#8b7355]/50'
                       }`}>
-                        <ChevronRight className={`absolute top-4 right-4 w-4 h-4 transition-all opacity-25 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 ${
+                        <ChevronRight className={`absolute bottom-4 right-4 w-4 h-4 transition-all opacity-25 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 ${
                           item.type === 'education'
                             ? theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
                             : theme === 'dark' ? 'text-purple-400' : 'text-[#a68a6a]'
