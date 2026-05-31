@@ -32,9 +32,9 @@ export const timeline = [
     description: 'Formación integral en ciencias de la computación: algoritmos, estructuras de datos, bases de datos, redes y desarrollo de software aplicado.',
     icon: '🎓',
     stats: [
-      { label: 'Semestres', value: '5+' },
+      { label: 'Semestres', value: '7+' },
       { label: 'Proyectos', value: '8+' },
-      { label: 'Promedio', value: '16.8' },
+      { label: 'Promedio', value: '15.8' },
     ],
     skills: ['Java', 'Python', 'C++', 'SQL', 'Redes', 'Algoritmos'],
     get images() { return loadImages(this.id); },
