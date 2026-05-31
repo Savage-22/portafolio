@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, ChevronRight, ArrowRight } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { timeline } from '../../data/timeline';
 
@@ -87,69 +87,62 @@ export default function Timeline({ limit }) {
 
                   {/* card */}
                   <div className={`flex-1 ml-16 lg:ml-0 ${isLeft ? 'lg:text-right' : 'lg:text-left'}`}>
-                    <div className={`rounded-xl p-5 sm:p-6 border shadow-md transition-shadow hover:shadow-lg ${
-                      theme === 'dark'
-                        ? 'bg-gray-900 border-gray-700'
-                        : 'bg-[#f5f1e8] border-[#8b7355]/20'
-                    }`}>
-                      <div className={`flex flex-wrap items-center gap-2 mb-2 ${
-                        isLeft ? 'lg:justify-end' : 'lg:justify-start'
+                    <Link to={`/trayectoria/${item.id}`} className="block group/card">
+                      <div className={`relative rounded-xl p-5 sm:p-6 border shadow-md hover:shadow-xl transition-all cursor-pointer ${
+                        theme === 'dark'
+                          ? 'bg-gray-900 border-gray-700 hover:border-gray-500'
+                          : 'bg-[#f5f1e8] border-[#8b7355]/20 hover:border-[#8b7355]/50'
                       }`}>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                        <ChevronRight className={`absolute top-4 right-4 w-4 h-4 transition-all opacity-25 group-hover/card:opacity-100 group-hover/card:translate-x-0.5 ${
                           item.type === 'education'
-                            ? theme === 'dark' ? 'bg-blue-500/20 text-blue-400' : 'bg-[#8b7355]/20 text-[#8b7355]'
-                            : theme === 'dark' ? 'bg-purple-500/20 text-purple-400' : 'bg-[#a68a6a]/20 text-[#a68a6a]'
+                            ? theme === 'dark' ? 'text-blue-400' : 'text-[#8b7355]'
+                            : theme === 'dark' ? 'text-purple-400' : 'text-[#a68a6a]'
+                        }`} />
+
+                        <div className={`flex flex-wrap items-center gap-2 mb-2 ${
+                          isLeft ? 'lg:justify-end' : 'lg:justify-start'
                         }`}>
-                          {item.type === 'education' ? 'Educación' : 'Experiencia'}
-                        </span>
+                          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                            item.type === 'education'
+                              ? theme === 'dark' ? 'bg-blue-500/20 text-blue-400' : 'bg-[#8b7355]/20 text-[#8b7355]'
+                              : theme === 'dark' ? 'bg-purple-500/20 text-purple-400' : 'bg-[#a68a6a]/20 text-[#a68a6a]'
+                          }`}>
+                            {item.type === 'education' ? 'Educación' : 'Experiencia'}
+                          </span>
+                        </div>
+
+                        <h3 className={`text-lg sm:text-xl font-bold mb-1 ${
+                          theme === 'dark' ? 'text-white' : 'text-[#2c2416]'
+                        }`}>
+                          {item.title}
+                        </h3>
+
+                        <p className={`font-medium text-sm mb-3 ${
+                          theme === 'dark' ? 'text-blue-300' : 'text-[#8b7355]'
+                        }`}>
+                          {item.institution}
+                        </p>
+
+                        <div className={`flex flex-wrap gap-3 mb-3 text-xs ${
+                          theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
+                        } ${isLeft ? 'lg:justify-end' : 'lg:justify-start'}`}>
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" />
+                            {item.period}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5" />
+                            {item.location}
+                          </span>
+                        </div>
+
+                        <p className={`text-sm leading-relaxed ${
+                          theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
+                        }`}>
+                          {item.description}
+                        </p>
                       </div>
-
-                      <h3 className={`text-lg sm:text-xl font-bold mb-1 ${
-                        theme === 'dark' ? 'text-white' : 'text-[#2c2416]'
-                      }`}>
-                        {item.title}
-                      </h3>
-
-                      <p className={`font-medium text-sm mb-3 ${
-                        theme === 'dark' ? 'text-blue-300' : 'text-[#8b7355]'
-                      }`}>
-                        {item.institution}
-                      </p>
-
-                      <div className={`flex flex-wrap gap-3 mb-3 text-xs ${
-                        theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
-                      } ${isLeft ? 'lg:justify-end' : 'lg:justify-start'}`}>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5" />
-                          {item.period}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3.5 h-3.5" />
-                          {item.location}
-                        </span>
-                      </div>
-
-                      <p className={`text-sm leading-relaxed mb-4 ${
-                        theme === 'dark' ? 'text-gray-400' : 'text-[#6b5d4a]'
-                      }`}>
-                        {item.description}
-                      </p>
-
-                      <div className={`border-t pt-3 flex ${isLeft ? 'lg:justify-end' : 'lg:justify-start'} ${
-                        theme === 'dark' ? 'border-gray-700' : 'border-[#8b7355]/15'
-                      }`}>
-                        <Link
-                          to={`/trayectoria/${item.id}`}
-                          className={`inline-flex items-center gap-1.5 text-xs font-semibold transition-colors ${
-                            theme === 'dark'
-                              ? 'text-blue-400 hover:text-blue-300'
-                              : 'text-[#8b7355] hover:text-[#6b5d4a]'
-                          }`}
-                        >
-                          Ver detalles <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
                 </motion.div>
               );

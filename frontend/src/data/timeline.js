@@ -8,6 +8,11 @@ export const timeline = [
     period: '2022 — Presente',
     description: 'Formación en ciencias de la computación, algoritmos, estructuras de datos, bases de datos y desarrollo de software.',
     icon: '🎓',
+    stats: [
+      { label: 'Semestres', value: '5+' },
+      { label: 'Proyectos', value: '8+' },
+      { label: 'Promedio', value: '16.8' },
+    ],
     highlights: [
       'Cursos de algoritmia, estructuras de datos y sistemas operativos',
       'Desarrollo de proyectos académicos en equipos multidisciplinarios',
@@ -25,6 +30,11 @@ export const timeline = [
     period: '2023 — 2024',
     description: 'Voluntariado enseñando programación básica a jóvenes de comunidades con recursos limitados. Más de 30 estudiantes impactados.',
     icon: '👨‍🏫',
+    stats: [
+      { label: 'Estudiantes', value: '30+' },
+      { label: 'Clases', value: '40+' },
+      { label: 'Meses', value: '12' },
+    ],
     highlights: [
       'Diseño de curriculum adaptado para principiantes sin experiencia previa',
       'Más de 30 jóvenes capacitados en lógica y programación básica',
@@ -42,6 +52,11 @@ export const timeline = [
     period: 'Ago 2025 — Dic 2025',
     description: 'Programa de intercambio en una de las top 10 universidades de América Latina. Materias en computación en un entorno multicultural e internacional.',
     icon: '🌍',
+    stats: [
+      { label: 'Meses', value: '5' },
+      { label: 'Países representados', value: '15+' },
+      { label: 'Ranking AL', value: 'Top 10' },
+    ],
     highlights: [
       'Una de las 10 mejores universidades de América Latina (QS Ranking)',
       'Cursos avanzados en inteligencia artificial y sistemas distribuidos',
@@ -59,6 +74,11 @@ export const timeline = [
     period: '2024 — Presente',
     description: 'Diseño y desarrollo de plataforma de gestión para conductores de delivery usando React, Node.js y PostgreSQL.',
     icon: '🛵',
+    stats: [
+      { label: 'Endpoints API', value: '30+' },
+      { label: 'Usuarios activos', value: '50+' },
+      { label: 'Meses en prod.', value: '6+' },
+    ],
     highlights: [
       'Arquitectura full-stack con React 19, Node.js y PostgreSQL',
       'Gestión de rutas en tiempo real para conductores de delivery',
@@ -76,6 +96,11 @@ export const timeline = [
     period: '2023 — Presente',
     description: 'Aprendizaje continuo a través de plataformas online: certificaciones en desarrollo web, ciencia de datos y herramientas de industria.',
     icon: '📚',
+    stats: [
+      { label: 'Certificaciones', value: '10+' },
+      { label: 'Plataformas', value: '4' },
+      { label: 'Horas estimadas', value: '200+' },
+    ],
     highlights: [
       'Más de 10 certificaciones obtenidas en distintas plataformas',
       'Especialización en desarrollo web full-stack y React',
@@ -93,6 +118,11 @@ export const timeline = [
     period: '2023',
     description: 'Desarrollo de un sistema web para gestión de notas y asistencias de estudiantes universitarios, orientado a docentes de la región.',
     icon: '🏫',
+    stats: [
+      { label: 'Usuarios', value: '15' },
+      { label: 'Módulos', value: '4' },
+      { label: 'Semanas de dev.', value: '8' },
+    ],
     highlights: [
       'Aplicación web full-stack para registro de notas y asistencias',
       'Panel de docente con reportes exportables en PDF',
