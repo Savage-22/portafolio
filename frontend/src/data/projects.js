@@ -1,13 +1,15 @@
+import logoRutero from '../assets/public/logoRutero.jpeg';
+
 export const projects = [
   {
     id: 'Rutero',
     title: 'Rutero',
     shortDescription: 'Plataforma de gestión inteligente para deliverys. Permite a los conductores registrar y controlar sus ganancias por entrega. Escalable hacia gestión empresarial completa.',
     description: 'Rutero es una plataforma full-stack diseñada para transformar la gestión de deliverys. En su Fase 1, los conductores pueden registrar cada entrega y llevar un control detallado de sus ganancias diarias. La arquitectura está pensada para escalar: las siguientes fases incluirán gestión de flotas, reportes empresariales y dashboards en tiempo real.',
-    image: '🛵',
+    image: logoRutero,
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
     githubUrl: 'https://github.com/Savage-22/Rutero',
-    liveUrl: null,
+    liveUrl: 'https://rutero-mu.vercel.app/',
     status: 'En Desarrollo',
     featured: false,
     features: [
