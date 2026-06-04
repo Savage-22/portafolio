@@ -83,7 +83,10 @@ export default function Projects() {
                     ? 'bg-gradient-to-br from-blue-500 to-purple-600'
                     : 'bg-gradient-to-br from-[#a68a6a] to-[#8b7355]'
                 }`}>
-                  {project.image ?? '📁'}
+                  {project.image && project.image.includes('/')
+                    ? <img src={project.image} alt={project.title} className="h-full w-full object-contain p-4" />
+                    : (project.image ?? '📁')
+                  }
                 </div>
 
                 <div className="p-6">
