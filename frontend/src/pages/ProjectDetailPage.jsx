@@ -15,7 +15,7 @@ export default function ProjectDetailPage() {
       }`}>
         <p className="text-2xl font-bold">Proyecto no encontrado</p>
         <Link
-          to="/proyectos"
+          to="/#proyectos"
           className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-white ${
             theme === 'dark' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-[#8b7355] hover:bg-[#6b5d4a]'
           }`}
@@ -34,7 +34,7 @@ export default function ProjectDetailPage() {
       <div className="w-full px-6 sm:px-8 lg:px-16 xl:px-24 max-w-5xl mx-auto">
 
         <Link
-          to="/proyectos"
+          to="/#proyectos"
           className={`inline-flex items-center gap-2 mb-10 text-sm font-medium transition-colors ${
             theme === 'dark' ? 'text-gray-400 hover:text-blue-400' : 'text-[#6b5d4a] hover:text-[#8b7355]'
           }`}
