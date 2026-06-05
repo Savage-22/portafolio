@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './HomePage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -14,6 +14,7 @@ export default function Rutas() {
           <Route path="/proyectos/:id" element={<ProjectDetailPage />} />
           <Route path="/trayectoria" element={<TimelinePage />} />
           <Route path="/trayectoria/:id" element={<TimelineDetailPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </Router>
